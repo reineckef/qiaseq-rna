@@ -1,0 +1,23 @@
+# STAR parameters
+alignIntronMax = 200000
+alignMatesGapMax = 200000
+alignSJDBoverhangMin = 3
+alignSJoverhangMin = 9
+alignSplicedMateMapLmin = 12
+alignSplicedMateMapLminOverLmate = 0
+chimJunctionOverhangMin = 12
+chimSegmentMin = 12
+chimSegmentReadGapMax = 0
+chimOutType = 'WithinBAM'
+genomeLoad = 'LoadAndKeep'
+limitBAMsortRAM = 16000000000
+outFilterMatchNminOverLread = 0.1
+outFilterScoreMinOverLread = 0.1
+outReadsUnmapped = 'Fastq'
+outSAMattributes = 'All'
+outSAMmode = 'Full'
+outSAMprimaryFlag = 'AllBestScore'
+outSAMtype = 'BAM Unsorted'
+outSAMunmapped = 'Within'
+runMode = 'alignReads'
+twopassMode = 'None'
