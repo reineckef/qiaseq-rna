@@ -14,9 +14,11 @@ def revComp(seq):
 
 #-----------------------------------------------------------------------------#
 def primer(cfg):
-    nameout = panelId + ".primers.txt"
-    
+    # get parameter settings
+    (runpath, runname, samplename, speSide, r1universal, r2universal, umiLen, umiOffset, panelId, platform) = cfg
+   
     # check if panel is already sorted
+    nameout = panelId + ".primers.txt"
     if os.path.isfile(nameout):
         return
         

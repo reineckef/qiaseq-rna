@@ -1,11 +1,12 @@
 '''
 main script to run Qiagen speRNA pipeline
 creates detailed report on read and tag counts, primer performance, and fragment lengths
-M Nezami Ranjbar, Qiagen, Aug 2018
+Qiagen, Aug 2018
 '''
 
-__version__ = 2.0
-__author__  = 'mohammad.nezami@qiagen.com'
+__version__ = "2.0"
+__author__  = "Mohammad Nezami Ranjbar"
+__email__   = "Mohammad.Nezami@qiagen.com"
 
 
 #-----------------------------------------------------------------------------#
