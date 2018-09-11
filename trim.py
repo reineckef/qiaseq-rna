@@ -220,17 +220,14 @@ def prep(cfg):
     subprocess.check_call("mkdir -p " + readSet, shell = True)   
     
     if platform == "2":
-        # cmd = "mv " + samplepath + "/" + samplename + "*.fastq " + readset + "/" + samplename + ".fastq"
-        cmd = "cp " + samplepath + "/" + samplename + "*.fastq " + readset + "/" + samplename + ".fastq"
+        cmd = "mv " + samplepath + "/" + samplename + "*.fastq " + readset + "/" + samplename + ".fastq"
         subprocess(cmd, shell = True)
         makePair(readset + "/" + samplename + ".fastq", speSide)
     else:
         fastq1 = samplepath + "/" + samplename + "*_R1*.fastq"
         fastq2 = samplepath + "/" + samplename + "*_R2*.fastq"        
-        # cmd1 = "if [ -e " + fastq1 + " ]; then mv " + fastq1 + " " + readSet + "/" + samplename + "_R1.fastq; else mv " + fastq1 + ".gz " + readSet + "/" + samplename + "_R1.fastq.gz; fi"
-        # cmd2 = "if [ -e " + fastq2 + " ]; then mv " + fastq2 + " " + readSet + "/" + samplename + "_R2.fastq; else mv " + fastq2 + ".gz " + readSet + "/" + samplename + "_R2.fastq.gz; fi"            
-        cmd1 = "if [ -e " + fastq1 + " ]; then cp " + fastq1 + " " + readSet + "/" + samplename + "_R1.fastq; else cp " + fastq1 + ".gz " + readSet + "/" + samplename + "_R1.fastq.gz; fi"
-        cmd2 = "if [ -e " + fastq2 + " ]; then cp " + fastq2 + " " + readSet + "/" + samplename + "_R2.fastq; else cp " + fastq2 + ".gz " + readSet + "/" + samplename + "_R2.fastq.gz; fi"    
+        cmd1 = "if [ -e " + fastq1 + " ]; then mv " + fastq1 + " " + readSet + "/" + samplename + "_R1.fastq; else mv " + fastq1 + ".gz " + readSet + "/" + samplename + "_R1.fastq.gz; fi"
+        cmd2 = "if [ -e " + fastq2 + " ]; then mv " + fastq2 + " " + readSet + "/" + samplename + "_R2.fastq; else mv " + fastq2 + ".gz " + readSet + "/" + samplename + "_R2.fastq.gz; fi"            
         subprocess.check_call(cmd1, shell = True)
         subprocess.check_call(cmd2, shell = True)
 
@@ -297,7 +294,6 @@ def run(cfgs, numCores):
     # file transfer and decompression
     for readset in sorted(cfgs.keys(), reverse = True):
         prep(cfgs[readset])
-    #joblib.Parallel(n_jobs = numJobs)(joblib.delayed(trim.fastqPrep)(cfgs[readSet], isDebug) for readSet in cfgs)
     
     # trim and tag reads
     print(datetime.now().strftime("%Y/%m/%d %H:%M:%S") + " trim and tag"    )
