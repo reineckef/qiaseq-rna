@@ -23,7 +23,7 @@ The input table, e.g. runList.tsv, is a tab-delimited file with at least 10 colu
     6   umiLen
     7   umiOffset
     8   panelId
-    9  platform
+    9   platform
     
 Lines starting with "#" and columns beyond the 10th are ignored. The pipeline expects fastq or fastq.gz files as:
 
