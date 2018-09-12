@@ -266,7 +266,7 @@ def trim(cfg, numCores):
         fastq2 += ".gz"
     
     # run trimming command
-    cmd = "python3 " + readTrimmer + " --seqtype rna --check_primer_side --no_tagnames --primer_col " + str(primerCol)
+    cmd = "python3 " + readTrimmer + " --thousand_commad --seqtype rna --check_primer_side --no_tagnames --primer_col " + str(primerCol)
     cmd += " --ncpu " + str(numCores) +  " --tag_seperator \"" + readIdSeparator + "\" --min_primer_side_len 30 --min_umi_side_len 30 --poly_tail_primer_side polyA "
     cmd += " --r1 " + fastq1 + " --r2 " + fastq2 + " --out_r1 " + readset + "/trim.R1.fq --out_r2 " + readset + "/trim.R2.fq " + " --out_metrics " + readset + "/trim.read.txt"
     cmd += " --primer_file " + panelId + ".primers.txt" + " --primer3_bases_R1 " + primer3BasesR1 + " --primer3_bases_R2 " + primer3BasesR2    
