@@ -25,7 +25,7 @@ def primer(cfg):
     # sort primers
     namein = panelId + ".txt"
     fileout = open(nameout, "w")
-    header = ["gene.id", "gene.symbol", "gene.strand", "chrom", "loc5", "loc3", "strand", "primer", "target.loc", "rna.distance", "pd.id", "offTarget.genes", "notMappale"]
+    header = ["#gene.id", "gene.symbol", "gene.strand", "chrom", "loc5", "loc3", "strand", "primer", "target.loc", "rna.distance", "pd.id", "offTarget.genes", "notMappale"]
     fileout.write("\t".join(header) + "\n")
     
     # regular primers
@@ -34,10 +34,10 @@ def primer(cfg):
         if line.startswith("#"):
             continue
             
-        row = line.split("\n").split("\t")
+        row = line.strip("\n").split("\t")
         
         controlType = row[11]
-        if controlType > 0:
+        if int(controlType) > 0:
             continue
         
         vec = list(row[1:8])
@@ -95,10 +95,12 @@ def primer(cfg):
     # control primers at bottom
     firstPrimer = True
     for line in open(namein, "r"):
-        row = line.split("\n").split("\t")
+        if line.startswith("#"):
+            continue
+        row = line.strip("\n").split("\t")
         
         controlType = row[11]
-        if controlType == 0:
+        if int(controlType) == 0:
             continue
         
         vec = list(row[1:8])
