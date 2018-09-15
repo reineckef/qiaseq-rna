@@ -114,11 +114,14 @@ RUN git clone --recursive https://github.com/noporpoise/seq-align && \
 RUN curl -L http://cpanmin.us | perl - --self-upgrade
 
 # insall deps only
-RUN cpanm -q --installdeps --without-suggests --without-recommends --skip-satisfied --no-man-pages https://github.com/qiaseq/QIMERA/releases/download/v2.1.0/QIMERA-2.1.0.tar.gz
+RUN curl -s https://api.github.com/repos/qiaseq/QIMERA/releases/latest | \
+        grep "QIMERA-" | cut -d : -f 2,3 | tr -d \" | tail -1 | \
+	cpanm -q --installdeps --without-suggests --without-recommends --skip-satisfied --no-man-pages
 
-# install own code now
-RUN  cpanm -q --notest https://github.com/qiaseq/QIMERA/releases/download/v2.1.0/QIMERA-2.1.0.tar.gz && \
-     rm -rf /home/qiauser/.cpanm/work
+# # install own code now
+# RUN curl -s https://api.github.com/repos/qiaseq/QIMERA/releases/latest | \
+#         grep "QIMERA-" | cut -d : -f 2,3 | tr -d \" | tail -1 | \
+#         cpanm -q --notest && rm -rf /home/qiauser/.cpanm/work
 
 # trimmer deps
 RUN pip3 install edlib Cython
