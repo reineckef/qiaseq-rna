@@ -1,14 +1,14 @@
 #################################################################
 # Dockerfile
 #
-# Version:          2.0.10
-# Software:         QIMERA base image
-# Software Version: 20180828
-# Description:      Dependencies for QIMERA
+# Version:          0.1.0
+# Software:         Four-In-One RNA Seq Container
+# Software Version: 20180915
+# Description:      Dependencies for RNA processing tools
 # Website:          http://www.qiagen.com/
 # Tags:             NGS|RNA|Fusion|QIAGEN|Transcriptomics
-# Base Image:       debian:9
-# Build Cmd:        docker build -t qiagen/qimera -f Dockerfile .
+# Base Image:       python:3
+# Build Cmd:        docker build -t qiagen/qiaseq-rna .
 #################################################################
 
 # base image
